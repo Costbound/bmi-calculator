@@ -3,52 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
   <title>Frontend Mentor | Body Mass Index Calculator</title>
 </head>
+
+
 <body>
-  <header class="header">
-    <svg class="header__logo" width="40" height="40">
-      <use href="./images/sprite.svg#icon-logo"></use>
-    </svg>
-  </header>
   <main>
-    <section class="hero">
+    <div class="hero__bg"></div>
+    <section class="hero section-any">
+        <svg class="hero__logo" width="40" height="40">
+          <use href="./images/sprite.svg#icon-logo"></use>
+        </svg>
       <div class="content-container">
         <h1 class="hero__title">Body Mass Index Calculator</h1>
         <p class="hero__para">Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the
         sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and
         well-being.</p>
-        </div>
-    </section>
-    <section class="calculator">
+      </div>
       <div class="content-container">
-        <h2 class="calculator__title">Enter your details below</h2>
-        <form class="calculator__form">
+        <form class="hero__form">
+          <h3 class="form__title">Enter your details below</h3>
           <div class="form__radio-container">
-            <label class="radio__lable" for="metric">Metric</label>
-            <input class="form__radio" type="radio" name="met-imp" value="metric" id="metric" checked>
-            <label class="radio__lable" for="imperial">Imperial</label>
-            <input class="form__radio" type="radio" name="met-imp" value="imperial" id="imperial">
+            <input class="form__radio visually-hidden" type="radio" name="met-imp" value="metric" id="metric" checked>
+            <label class="form__radio-lable" for="metric">Metric
+              <span class="form__radio-span">
+                <span class="form__radio-span2"></span>
+              </span>
+            </label>
+            <input class="form__radio visually-hidden" type="radio" name="met-imp" value="imperial" id="imperial">
+            <label class="form__radio-lable" for="imperial">Imperial
+              <span class="form__radio-span">
+                <span class="form__radio-span2"></span>
+              </span>
+            </label>
           </div>
           <div class="form__metric-container">
-            <label class="metric-container__lable" for="height-metric">Height
+            <label class="metric-container__lable lable-any" for="height-metric">Height
               <div class="metric-container__input-container">
               <input class="metric-container__input" type="tel" name="height-metric" id="height-metric" role="height-input">
               <p class="input-container__para">cm</p>
               </div>
             </label>
-            <label for="weight-metric" class="metric-container__lable">Weight
+            <label for="weight-metric" class="metric-container__lable lable-any">Weight
               <div class="metric-container__input-container">
               <input class="metric-container__input" type="tel" name="weight-metric" id="weight-metric" role="weight-input">
               <p class="input-container__para">kg</p>
               </div>
             </label>
           </div>
-          <div class="form__imperial-container">
-            <label class="imperial-container__lable" for="height-imperial">Height
+          <div class="form__imperial-container not-active">
+            <label class="imperial-container__lable lable-any" for="height-imperial">Height
               <div class="imperial-container__input-container">
               <input class="imperial-container__input" type="tel" name="height-ft" id="height-imperial" role="height-input">
               <p class="input-container__para">ft</p>
@@ -58,7 +68,7 @@
               <p class="input-container__para">in</p>
               </div>
             </label>
-            <label for="weight-imperial" class="imperial-container__lable">Weight
+            <label for="weight-imperial" class="imperial-container__lable lable-any">Weight
               <div class="imperial-container__input-container">
                 <input class="imperial-container__input" type="tel" name="weight-st" id="weight-imperial" role="weight-input">
                 <p class="input-container__para">st</p>
@@ -76,7 +86,7 @@
         </form>
       </div>
     </section>
-    <section class="bmi-meaning">
+    <section class="bmi-meaning section-any">
       <div class="content-container">
         <img
          srcset="./images/man-eating.png 1x, ./images/man-eating@2x.png 2x"
@@ -93,9 +103,9 @@
         </p>
       </div>
     </section>
-    <section class="advices">
+    <section class="advices section-any">
       <div class="content-container">
-        <ul class="advices__list">
+        <ul class="advices__list list-any">
           <li class="advices__item">
             <svg class="advices__icon" width="64" height="64">
               <use href="./images/sprite.svg#icon-eating"></use>
@@ -128,14 +138,14 @@
         </ul>
       </div>
     </section>
-    <section class="limitations">
+    <section class="limitations section-any">
       <div class="content-container">
         <h2 class="limitations__title">Limitations of BMI</h2>
         <p class="limitations__para">
           Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should
           carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.
         </p>
-        <ul class="limitations__list">
+        <ul class="limitations__list list-any">
           <li class="limitations__item">
             <svg class="limitations__icon" width="32" height="32">
               <use href="./images/sprite.svg#icon-gender"></use>
