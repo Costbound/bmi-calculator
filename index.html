@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
   <title>Frontend Mentor | Body Mass Index Calculator</title>
+  <script src="./script.js" defer></script>
 </head>
 
 
@@ -44,7 +45,7 @@
                 </span>
               </label>
             </div>
-            <div class="form__metric-container  not-active">
+            <div class="form__metric-container">
               <label class="metric-container__lable lable-any" for="height-metric">Height
                 <div class="metric-container__input-container">
                   <input 
@@ -53,7 +54,8 @@
                     name="height-metric" 
                     id="height-metric" 
                     role="height-input"
-                    placeholder="0">
+                    placeholder="0"
+                    onkeypress="return inputValidator(event)">
                   <p class="input-container__para">cm</p>
                 </div>
               </label>
@@ -70,7 +72,7 @@
                 </div>
               </label>
             </div>
-            <div class="form__imperial-container">
+            <div class="form__imperial-container  not-active">
               <label class="imperial-container__lable lable-any" for="height-imperial">Height
                 <div class="imperial-container__lable__inputs-container">
                   <div class="imperial-container__input-container">
@@ -121,8 +123,8 @@
               </label>
             </div>
             <div class="form__result-container">
-              <p class="result__welcome-para">Welcome!<span class="result__welcome-span"><span></p>
-              <p class="result__ideal-weight-para">Enter your height and weight and you’ll see your BMI result here<span class="result__idel-weight-span"></span></p>
+              <p class="result__para">Your BMI is...<span class="result__span">22.0<span></p>
+              <p class="result__ideal-weight-para">Enter your height and weight and you’ll see your BMI result here<span class="result__ideal-weight-span"></span></p>
             </div>
           </form>
         </div>
@@ -197,6 +199,9 @@
             Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should
             carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.
           </p>
+          <svg class="limitations__curved-line" width="95" height="193">
+            <use href="./images/sprite.svg#icon-pattern-curved-line-right"></use>
+          </svg>
         </div>
         <ul class="limitations__list list-any">
           <li class="limitations__item">
