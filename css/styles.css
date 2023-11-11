@@ -132,6 +132,9 @@ svg {
     height: 69px;
     margin-top: 8px;
 }
+.imperial-container__input-container:not(:last-child) {
+    margin-bottom: 24px;
+}
 .metric-container__input,
 .imperial-container__input {
     padding: 24px 73px 24px 24px;
@@ -179,12 +182,10 @@ svg {
     padding: 32px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 24px;
-    transition: max-height 150ms;
+    transition: max-height 500ms;
 }
-.result__para_not-active {
-    text-align: center;
+.result__para {
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -1.2px;
@@ -196,7 +197,6 @@ svg {
     line-height: 1.1;
 }
 .result__ideal-weight-para {
-    text-align: center;
     font-size: 14px;
     color: var(--Pure-White, #FFF);
 }
@@ -422,8 +422,10 @@ svg {
     .form__result-container {
         border-radius: 16px 999px 999px 16px;
         align-items: flex-start;
+        gap: 16px;
+        justify-content: space-between;
     }
-    .result__para_not-active {
+    .result__para {
         margin: 0;
     }
     .result__ideal-weight-para {
@@ -477,7 +479,8 @@ svg {
     .hero__form {
         width: 564px;
         height: auto;
-        transition: max-height 150ms;
+        max-height: 450px;
+        transition: max-height 500ms;
     }
     .form__title {
         text-align: left;
@@ -494,16 +497,16 @@ svg {
         height: auto;
         max-height: 250px;
         overflow-y: hidden;
-        transition: max-height 150ms;
+        transition: max-height 500ms;
     }
     .form__metric-container{
         height: auto;
         max-height: 110px;
         overflow-y: hidden;
-        transition: max-height 150ms;
+        transition: max-height 500ms;
     }
     .form__result-container {
-        max-height: 166px;
+        max-height: 130px;
     }
     .result__span {
         font-size: 64px;
@@ -607,7 +610,4 @@ svg {
 .not-active {
     display: none;
     max-height: 0;
-}
-.result__para_active {
-
 }

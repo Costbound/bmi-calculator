@@ -55,6 +55,7 @@
                     id="height-metric" 
                     role="height-input"
                     placeholder="0"
+                    maxlength="8"
                     onkeypress="return inputValidator(event)">
                   <p class="input-container__para">cm</p>
                 </div>
@@ -67,7 +68,9 @@
                     name="weight-metric" 
                     id="weight-metric" 
                     role="weight-input"
-                    placeholder="0">
+                    placeholder="0"
+                    maxlength="8"
+                    onkeypress="return inputValidator(event)">
                   <p class="input-container__para">kg</p>
                 </div>
               </label>
@@ -82,7 +85,9 @@
                       name="height-ft" 
                       id="height-imperial" 
                       role="height-input"
-                      placeholder="0">
+                      placeholder="0"
+                      maxlength="8"
+                      onkeypress="return inputValidator(event)">
                     <p class="input-container__para">ft</p>
                   </div>
                   <div class="imperial-container__input-container">
@@ -92,7 +97,9 @@
                       name="height-inch" 
                       id="height-imperial" 
                       role="height-input"
-                      placeholder="0">
+                      placeholder="0"
+                      maxlength="8"
+                      onkeypress="return inputValidator(event)">
                     <p class="input-container__para">in</p>
                   </div>
                 </div>
@@ -106,7 +113,9 @@
                       name="weight-st" 
                       id="weight-imperial" 
                       role="weight-input"
-                      placeholder="0">
+                      placeholder="0"
+                      maxlength="8"
+                      onkeypress="return inputValidator(event)">
                     <p class="input-container__para">st</p>
                   </div>
                   <div class="imperial-container__input-container">
@@ -116,14 +125,16 @@
                       name="weight-lbs" 
                       id="weight-imperial" 
                       role="weight-input"
-                      placeholder="0">
+                      placeholder="0"
+                      maxlength="8"
+                      onkeypress="return inputValidator(event)">
                     <p class="input-container__para">lbs</p>
                   </div>
                 </div>
               </label>
             </div>
             <div class="form__result-container">
-              <p class="result__para">Your BMI is...<span class="result__span">22.0<span></p>
+              <p class="result__para">Welcome!<span class="result__span"><span></p>
               <p class="result__ideal-weight-para">Enter your height and weight and you’ll see your BMI result here<span class="result__ideal-weight-span"></span></p>
             </div>
           </form>
