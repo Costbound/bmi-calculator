@@ -21,20 +21,23 @@ const idealSpan = document.querySelector(".result__ideal-weight-span");
 
 radioContainer.addEventListener("change",async () => {
     if (radioMetric.checked) {
-        form.style.maxHeight = "450px";
-        await delay(500);
+        form.style.maxHeight = "";
+        resultContainer.style.maxHeight = "";
+        await delay(250);
         imperialContainer.classList.add("not-active");
         metricContainer.classList.remove("not-active");
         ftInput.value = "";
         inchInput.value = "";
         stInput.value = "";
         lbsInput.value = "";
+        resultDefault();
     } else if (radioImperial.checked) {
         metricContainer.classList.add("not-active");
         imperialContainer.classList.remove("not-active");
         form.style.maxHeight = "600px";
         cmInput.value = "";
         kgInput.value = "";
+        resultDefault();
     }
 });
 
@@ -49,7 +52,7 @@ function inputValidator(evt) {
 
 async function resultDefault() {
     resultContainer.style.maxHeight = "";
-    await delay(500);
+    await delay(250);
     resultContainer.style.flexDirection = "";
     resultContainer.style.alighnItems = "";
     resultContainer.style.alignItems = "";
@@ -58,9 +61,10 @@ async function resultDefault() {
     idealPara.textContent = "Enter your height and weight and you’ll see your BMI result here";
     idealPara.style.width = "";
 }
+
 async function resultInvalid() {
     resultContainer.style.maxHeight = "";
-    await delay(500);
+    await delay(250);
     resultContainer.style.flexDirection = "";
     resultContainer.style.alighnItems = "";
     resultContainer.style.alignItems = "";
@@ -69,35 +73,54 @@ async function resultInvalid() {
     idealPara.textContent = "Enter proper height and weight";
     idealPara.style.width = "";
 }
-async function metricCalculate() {
-    const bmi = Number(kgInput.value / ((cmInput.value / 100) ** 2)).toFixed(1);
-    console.log(typeof(Number(bmi)));
-    if (cmInput.value.length > 1 && kgInput.value.length > 1) {
-        form.style.maxHeight = "480px";
 
+const resultOutput = async (bmi, min, max) => {
+    if (window.innerWidth > 767) {
         resultContainer.style.flexDirection = "row";
-        resultContainer.style.alighnItems = "center";
         resultContainer.style.maxHeight = "166px";
         resultContainer.style.alignItems = "center";
+    } else {
+        resultContainer.style.maxHeight = "257px";
+    }
+    resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
+    resultPara.style.fontSize = "16px";
+    window.innerWidth > 1439 ? idealPara.style.width = "206px" : window.innerWidth < 1440 && window.innerWidth > 767 ? idealPara.style.width = "267px" : idealPara.style.width = "";
+    const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
+    idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${min} - ${max}</span>.`;
+}
 
-        resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
-        resultPara.style.fontSize = "16px";
+const metricTimer = setTimeout(metricCalculate, 1500);
 
-        idealPara.style.width = "206px";
-        
-        const minIdealWeight = (24.9 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1);
-        const maxIdealWeight = (18.5 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1);
-
-        const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
-        idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${maxIdealWeight}kgs - ${minIdealWeight}kgs</span>.`;
+function metricCalculate() {
+    const bmi = Number((Number(kgInput.value) / ((Number(cmInput.value) / 100) ** 2)).toFixed(1));
+    if (cmInput.value.length > 1 && kgInput.value.length > 1) {
+        window.innerWidth > 767 ? form.style.maxHeight = "485px" : form.style.maxHeight = "650px"
+        const minIdealWeight = (18.5 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1) + "kgs";
+        const maxIdealWeight = (24.9 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1) + "kgs";
+        resultOutput(bmi, minIdealWeight, maxIdealWeight);
     } else if (cmInput.value.length === 0 || kgInput.value.length === 0) {
         resultDefault();
-    }if ((Number(bmi) < 10 || Number(bmi) > 100) && cmInput.value.length > 1 && kgInput.value.length > 1) {
+    }
+    if ((bmi < 10 || bmi > 100) && cmInput.value.length > 0 && kgInput.value.length > 0) {
         resultInvalid();
     }
 }
 
 function imperialCalculate() {
-    const bmi = Number(703 * ((lbsInput.value + stInput.value * 14) / (ftInput.value + (inchInput.value * 0,833333 / 10) ** 2)));
-    console.log(bmi);
+    const inch = Number(inchInput.value) + Number(ftInput.value) * 12;
+    const lbs = Number(lbsInput.value) + Number(stInput.value) * 14;
+    const bmi = Number(((703 * lbs) / (inch ** 2)).toFixed(1));
+    if ((lbsInput.length > 0 || stInput.value.length > 0) && (ftInput.value.length > 0 || inchInput.value.length > 0)) {
+        form.style.maxHeight = "608px";
+        const minWeight = (5 * 18.5 + (18.5 / 5) * (inch - 60));
+        const maxWeight = (5 * 24.9 + (24.9 / 5) * (inch - 60));
+        const minIdealWeight = (Math.floor(minWeight / 14) + "st ") + ((minWeight % 14 - 1).toFixed(0) + "lbs");
+        const maxIdealWeight = (Math.floor(maxWeight / 14) + "st ") + ((maxWeight % 14 - 1).toFixed(0) + "lbs");
+        resultOutput(bmi, minIdealWeight, maxIdealWeight);
+    } else if ((ftInput.value.length === 0 && inchInput.value.length === 0) || (stInput.value.length === 0 && lbsInput.value.length === 0)) {
+        resultDefault();
+    }
+    if ((Number(bmi) < 10 || Number(bmi) > 100) && (lbsInput.length > 0 || stInput.value.length > 0) && (ftInput.value.length > 0 || inchInput.value.length > 0)) {
+        resultInvalid();
+    }
 }

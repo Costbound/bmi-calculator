@@ -28,117 +28,115 @@
           sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and
           well-being.</p>
         </div>
-        <div class="hero__form-container">
-          <form class="hero__form">
-            <h3 class="form__title">Enter your details below</h3>
-            <div class="form__radio-container">
-              <input class="form__radio visually-hidden" type="radio" name="met-imp" value="metric" id="metric" checked>
-              <label class="form__radio-lable" for="metric">Metric
-                <span class="form__radio-span">
-                  <span class="form__radio-span2"></span>
-                </span>
-              </label>
-              <input class="form__radio visually-hidden" type="radio" name="met-imp" value="imperial" id="imperial">
-              <label class="form__radio-lable" for="imperial">Imperial
-                <span class="form__radio-span">
-                  <span class="form__radio-span2"></span>
-                </span>
-              </label>
-            </div>
-            <div class="form__metric-container">
-              <label class="metric-container__lable lable-any" for="height-metric">Height
-                <div class="metric-container__input-container">
+        <form class="hero__form">
+          <h3 class="form__title">Enter your details below</h3>
+          <div class="form__radio-container">
+            <input class="form__radio visually-hidden" type="radio" name="met-imp" value="metric" id="metric" checked>
+            <label class="form__radio-lable" for="metric">Metric
+              <span class="form__radio-span">
+                <span class="form__radio-span2"></span>
+              </span>
+            </label>
+            <input class="form__radio visually-hidden" type="radio" name="met-imp" value="imperial" id="imperial">
+            <label class="form__radio-lable" for="imperial">Imperial
+              <span class="form__radio-span">
+                <span class="form__radio-span2"></span>
+              </span>
+            </label>
+          </div>
+          <div class="form__metric-container">
+            <label class="metric-container__lable lable-any" for="height-metric">Height
+              <div class="metric-container__input-container">
+                <input 
+                  class="metric-container__input" 
+                  type="tel" 
+                  name="height-metric" 
+                  id="height-metric" 
+                  role="height-input"
+                  placeholder="0"
+                  maxlength="8"
+                  onkeypress="return inputValidator(event)">
+                <p class="input-container__para">cm</p>
+              </div>
+            </label>
+            <label for="weight-metric" class="metric-container__lable lable-any">Weight
+              <div class="metric-container__input-container">
+                <input 
+                  class="metric-container__input" 
+                  type="tel" 
+                  name="weight-metric" 
+                  id="weight-metric" 
+                  role="weight-input"
+                  placeholder="0"
+                  maxlength="8"
+                  onkeypress="return inputValidator(event)">
+                <p class="input-container__para">kg</p>
+              </div>
+            </label>
+          </div>
+          <div class="form__imperial-container  not-active">
+            <label class="imperial-container__lable lable-any" for="height-imperial">Height
+              <div class="imperial-container__lable__inputs-container">
+                <div class="imperial-container__input-container">
                   <input 
-                    class="metric-container__input" 
+                    class="imperial-container__input" 
                     type="tel" 
-                    name="height-metric" 
-                    id="height-metric" 
+                    name="height-ft" 
+                    id="height-imperial" 
                     role="height-input"
                     placeholder="0"
                     maxlength="8"
                     onkeypress="return inputValidator(event)">
-                  <p class="input-container__para">cm</p>
+                  <p class="input-container__para">ft</p>
                 </div>
-              </label>
-              <label for="weight-metric" class="metric-container__lable lable-any">Weight
-                <div class="metric-container__input-container">
+                <div class="imperial-container__input-container">
                   <input 
-                    class="metric-container__input" 
+                    class="imperial-container__input" 
                     type="tel" 
-                    name="weight-metric" 
-                    id="weight-metric" 
+                    name="height-inch" 
+                    id="height-imperial" 
+                    role="height-input"
+                    placeholder="0"
+                    maxlength="8"
+                    onkeypress="return inputValidator(event)">
+                  <p class="input-container__para">in</p>
+                </div>
+              </div>
+            </label>
+            <label for="weight-imperial" class="imperial-container__lable lable-any">Weight
+              <div class="imperial-container__lable__inputs-container">
+                <div class="imperial-container__input-container">
+                  <input 
+                    class="imperial-container__input" 
+                    type="tel" 
+                    name="weight-st" 
+                    id="weight-imperial" 
                     role="weight-input"
                     placeholder="0"
                     maxlength="8"
                     onkeypress="return inputValidator(event)">
-                  <p class="input-container__para">kg</p>
+                  <p class="input-container__para">st</p>
                 </div>
-              </label>
-            </div>
-            <div class="form__imperial-container  not-active">
-              <label class="imperial-container__lable lable-any" for="height-imperial">Height
-                <div class="imperial-container__lable__inputs-container">
-                  <div class="imperial-container__input-container">
-                    <input 
-                      class="imperial-container__input" 
-                      type="tel" 
-                      name="height-ft" 
-                      id="height-imperial" 
-                      role="height-input"
-                      placeholder="0"
-                      maxlength="8"
-                      onkeypress="return inputValidator(event)">
-                    <p class="input-container__para">ft</p>
-                  </div>
-                  <div class="imperial-container__input-container">
-                    <input 
-                      class="imperial-container__input" 
-                      type="tel" 
-                      name="height-inch" 
-                      id="height-imperial" 
-                      role="height-input"
-                      placeholder="0"
-                      maxlength="8"
-                      onkeypress="return inputValidator(event)">
-                    <p class="input-container__para">in</p>
-                  </div>
+                <div class="imperial-container__input-container">
+                  <input 
+                    class="imperial-container__input" 
+                    type="tel" 
+                    name="weight-lbs" 
+                    id="weight-imperial" 
+                    role="weight-input"
+                    placeholder="0"
+                    maxlength="8"
+                    onkeypress="return inputValidator(event)">
+                  <p class="input-container__para">lbs</p>
                 </div>
-              </label>
-              <label for="weight-imperial" class="imperial-container__lable lable-any">Weight
-                <div class="imperial-container__lable__inputs-container">
-                  <div class="imperial-container__input-container">
-                    <input 
-                      class="imperial-container__input" 
-                      type="tel" 
-                      name="weight-st" 
-                      id="weight-imperial" 
-                      role="weight-input"
-                      placeholder="0"
-                      maxlength="8"
-                      onkeypress="return inputValidator(event)">
-                    <p class="input-container__para">st</p>
-                  </div>
-                  <div class="imperial-container__input-container">
-                    <input 
-                      class="imperial-container__input" 
-                      type="tel" 
-                      name="weight-lbs" 
-                      id="weight-imperial" 
-                      role="weight-input"
-                      placeholder="0"
-                      maxlength="8"
-                      onkeypress="return inputValidator(event)">
-                    <p class="input-container__para">lbs</p>
-                  </div>
-                </div>
-              </label>
-            </div>
-            <div class="form__result-container">
-              <p class="result__para">Welcome!<span class="result__span"><span></p>
-              <p class="result__ideal-weight-para">Enter your height and weight and you’ll see your BMI result here<span class="result__ideal-weight-span"></span></p>
-            </div>
-          </form>
-        </div>
+              </div>
+            </label>
+          </div>
+          <div class="form__result-container">
+            <p class="result__para">Welcome!</p>
+            <p class="result__ideal-weight-para">Enter your height and weight and you’ll see your BMI result here</p>
+          </div>
+        </form>
       </div>
     </section>
 

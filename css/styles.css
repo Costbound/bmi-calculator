@@ -17,7 +17,7 @@ h1,
 h2,
 h3,
 p {
-    margin: 0 auto;
+    margin: 0;
 }
 .list-any {
     list-style-type: none;
@@ -63,7 +63,6 @@ svg {
     background: var(--Gradient-1, linear-gradient(290deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%));
     position: absolute;
     top: 0;
-    left: 0;
     z-index: -999;
 }
 .hero__form {
@@ -72,6 +71,7 @@ svg {
     box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
     display: flex;
     flex-direction: column;
+    transition: max-height 250ms;
 }
 .form__radio-container {
     display: flex;
@@ -114,7 +114,7 @@ svg {
     border-color: transparent;
     background-color: #345FF626;
 }
-.form__radio:checked+.form__radio-lable .form__radio-span2 {
+.form__radio:checked + .form__radio-lable .form__radio-span2 {
     transform: scale(100%);
 }
 .form__radio-lable:hover .form__radio-span {
@@ -124,21 +124,18 @@ svg {
     display: block;
     color: #5E6E85;
     font-size: 14px;
-    line-height: 150%;
 }
 .metric-container__input-container,
 .imperial-container__input-container {
     position: relative;
-    height: 69px;
     margin-top: 8px;
 }
-.imperial-container__input-container:not(:last-child) {
+.imperial-container__lable:not(:last-child) {
     margin-bottom: 24px;
 }
 .metric-container__input,
 .imperial-container__input {
     padding: 24px 73px 24px 24px;
-    height: 29px;
     border-radius: 12px;
     border: 1px solid #D8E2E7;
     background: var(--Pure-White, #FFF);
@@ -153,9 +150,7 @@ svg {
 .imperial-container__lable__inputs-container{
     display: flex;
     gap: 24px;
-}
-.imperial-container__input-container {
-    width: calc(50% - 16px);
+    justify-content: space-between;
 }
 .metric-container__input::placeholder,
 .imperial-container__input::placeholder {
@@ -182,8 +177,8 @@ svg {
     padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    transition: max-height 500ms;
+    justify-content: space-between;
+    transition: max-height 250ms;
 }
 .result__para {
     font-size: 24px;
@@ -195,10 +190,14 @@ svg {
     display: block;
     font-weight: 600;
     line-height: 1.1;
+    margin-top: 8px;
 }
 .result__ideal-weight-para {
     font-size: 14px;
     color: var(--Pure-White, #FFF);
+}
+.result__ideal-weight-span {
+    font-weight: 700;
 }
 
 
@@ -207,15 +206,7 @@ svg {
 
 /* Tips----------------------------------------------------------------------------------------------------------------- */
 .tips {
-    padding-top: 56px;
-    padding-bottom: 56px;
     background-image: linear-gradient(290deg, rgba(215, 231, 254, 0.25), rgba(214, 252, 254, 0.00) 100%);
-}
-.tips__item:not(:last-child) {
-    margin-bottom: 40px;
-}
-.tips__icon {
-    margin-bottom: 32px;
 }
 .tips__title {
     margin-bottom: 24px;
@@ -223,22 +214,11 @@ svg {
 
 
 /* Limitations-------------------------------------------------------------------------------------------------------------------------- */
-.limitations {
-    padding-top: 72px;
-    padding-bottom: 96px;
-}
-.limitations__title {
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: -1.6px;
-    margin-bottom: 32px;
-}
 .limitations__item {
     padding: 24px;
     border-radius: 16px;
     background: var(--Pure-White, #FFF);
     box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
-    margin: 0 auto;
 }
 .limitations__item-title-container {
     display: flex;
@@ -264,30 +244,58 @@ svg {
     /* HERO */
     .hero__bg {
         height: 645px;
-        width: 100%;
     }
     .hero__form {
         gap: 24px;
         padding: 24px;
+        max-height: 590px;
     }
     .form__radio-container {
         justify-content: space-between;
     }
+    .metric-container__lable:first-child {
+        margin-bottom: 24px;
+    }
     .form__result-container {
-        max-height: 257px;
         border-radius: 16px;
-        align-items: center;
+        max-height: 190px;
+        overflow-y: hidden;
+        gap: 24px;
     }
     /* Your Result */
     .your-result {
         padding: 72px 0;
     }
-    .your-result__img {
-        margin: 0 auto 48px auto;
+    .your-result__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Tips */
+    .tips {
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+    .tips__icon {
+        margin-bottom: 32px;
+    }
+    /* Limitations */
+    .limitations {
+        padding-top: 72px;
+    }
+    .limitations__item {
+        margin: 0 auto;
+    }
+    .limitations__item:not(:last-child) {
+        margin-bottom: 16px;
     }
 }
 @media (max-width: 1439px) {
     /* HERO */
+    .hero__bg {
+        width: 100%;
+        left: 0;
+    }
     .hero {
         padding-top: 32px;
     }
@@ -317,18 +325,28 @@ svg {
         letter-spacing: -1.6px;
         margin-bottom: 32px;
     }
+    /* Tips */
+    .limitations {
+        padding-bottom: 96px;
+    }
+    .tips__item:not(:last-child) {
+        margin-bottom: 40px;
+    }
     /* Limitations */
     .limitations__text-container {
         margin-bottom: 56px;
+    }
+    .limitations__title {
+        font-size: 32px;
+        text-align: center;
+        letter-spacing: -1.6px;
+        margin-bottom: 32px;
     }
     .limitations__para {
         text-align: center;
     }
     .limitations__curved-line {
         display: none;
-    }
-    .limitations__item:not(:last-child) {
-        margin-bottom: 16px;
     }
 }
 @media (min-width: 768px) and (max-width: 1439px) {
@@ -341,7 +359,6 @@ svg {
     }
     /* HERO */
     .hero__bg {
-        width: 100%;
         height: 640px;
     }
     .hero__logo {
@@ -351,18 +368,11 @@ svg {
         padding-left: 175px;
         padding-right: 175px;
     }
-    .form__title {
-        margin: 0;
+    .hero__form {
+        max-height: 430px;
     }
     .form__radio-container {
         gap: 230px;
-    }
-    .form__metric-container {
-        display: flex;
-        gap: 24px;
-    }
-    .form__result-container {
-        max-height: 149px;
     }
     /* Your Result */
     .your-result {
@@ -370,7 +380,6 @@ svg {
         padding-bottom: 96px;
     }
     .your-result__container {
-        display: flex;
         justify-content: flex-end;
         gap: 75px;
     }
@@ -395,11 +404,9 @@ svg {
     }
     /* Limitations */
     .limitations {
-        padding: 96px;
+        padding-top: 96px;
     }
     .limitations__list {
-        display: flex;
-        flex-wrap: wrap;
         gap: 24px 15px
     }
     .limitations__item:not(:last-child) {
@@ -407,6 +414,7 @@ svg {
     }
     .limitations__item:last-child {
         width: 50%;
+        margin: 0 auto;
     }
 }
 @media (min-width: 768px) {
@@ -414,40 +422,53 @@ svg {
     .hero__form {
         gap: 32px;
         padding: 32px;
+        height: auto;
+        max-height: 450px;
+    }
+    .form__imperial-container {
+        height: auto;
+        max-height: 250px;
+        overflow-y: hidden;
+        transition: max-height 250ms
     }
     .form__metric-container {
         display: flex;
         gap: 24px;
+        height: auto;
+        max-height: 110px;
+        overflow-y: hidden;
+        transition: max-height 250ms
+    }
+    .imperial-container__input-container {
+        width: 299px;
     }
     .form__result-container {
         border-radius: 16px 999px 999px 16px;
-        align-items: flex-start;
         gap: 16px;
-        justify-content: space-between;
+        max-height: 130px;
     }
-    .result__para {
-        margin: 0;
+    /* Your Result */
+    .your-result__container {
+        display: flex;
     }
-    .result__ideal-weight-para {
-        margin: 0;
+    /* Limitations */
+    .limitations__list {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 @media (min-width: 1440px) {
-    .section-any {
-        padding-bottom: 96px;
-    }
     .content-container {
         width: 1160px;
     }
 
     /* HERO */
     .hero {
-        padding-bottom: 0;
+        padding-top: 167px;
     }
     .hero__bg {
         width: 68%;
         height: 737px;
-        background-repeat: no-repeat;
         left: 24px;
     }
     .hero__logo {
@@ -457,70 +478,36 @@ svg {
     }
     .hero__container {
         position: relative;
-        margin-top: 167px;
         display: flex;
         align-items: center;
         gap: 32px;
     }
     .hero__text-container {
-        min-width: 564px;
-    }
-    .hero__form-container {
-        height: 613px;
+        width: 564px;
     }
     .hero__title {
         width: 456px;
-        margin: 0 0 35px 0;
+        margin-bottom: 35px;
     }
     .hero__para {
         width: 456px;
-        margin: 0;
     }
     .hero__form {
         width: 564px;
-        height: auto;
-        max-height: 450px;
-        transition: max-height 500ms;
-    }
-    .form__title {
-        text-align: left;
-        margin-left: 0;
-        margin-right: 0;
     }
     .form__radio-container {
         gap: 163px;
-    }
-    .imperial-container__input-container {
-        width: 238px;
-    }
-    .form__imperial-container{
-        height: auto;
-        max-height: 250px;
-        overflow-y: hidden;
-        transition: max-height 500ms;
-    }
-    .form__metric-container{
-        height: auto;
-        max-height: 110px;
-        overflow-y: hidden;
-        transition: max-height 500ms;
-    }
-    .form__result-container {
-        max-height: 130px;
     }
     .result__span {
         font-size: 64px;
         letter-spacing: -3.2px;
     }
-    .result__ideal-weight-span {
-        font-weight: 700;
-    }
     /* Your Result */
     .your-result {
-        padding-top: 40px;
+        padding-top: 172px;
+        padding-bottom: 96px;
     }
     .your-result__container {
-        display: flex;
         position: relative;
         align-items: flex-end;
         gap: 131px;
@@ -538,12 +525,12 @@ svg {
         margin-bottom: 40px;
     }
     .your-result__title {
-        font-size: 48px;
         margin-bottom: 35px;
     }
     /* Tips */
     .tips {
-        margin-top: 72px;
+        padding-top: 72px;
+        padding-bottom: 96px;
     }
     .tips__list {
         display: flex;
@@ -565,19 +552,13 @@ svg {
         margin-bottom: 80px;
     }
     .limitations__title {
-        text-align: left;
-        font-size: 48px;
-    }
-    .limitations__para {
-        text-align: left;
+        margin-bottom: 35px;
     }
     .limitations__curved-line {
         position: absolute;
         left: 150px;
     }
     .limitations__list {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: center;
         gap: 24px 32px;
     }
