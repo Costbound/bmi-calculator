@@ -271,6 +271,9 @@ svg {
         flex-direction: column;
         align-items: center;
     }
+    .your-result__img {
+        margin-bottom: 48px;
+    }
     /* Tips */
     .tips {
         padding-top: 56px;

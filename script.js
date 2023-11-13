@@ -40,14 +40,20 @@ radioContainer.addEventListener("change",async () => {
         resultDefault();
     }
 });
+const delay = async (ms) => { await new Promise(resolve => setTimeout(resolve, ms)) };
 
-metricContainer.addEventListener("input", metricCalculate);
-imperialContainer.addEventListener("input", imperialCalculate);
+metricContainer.addEventListener("input", (evt) => {
+    setTimeout(metricCalculate, 2000);
+    evt.target.value = evt.target.value.replace(",", ".");
+});
+imperialContainer.addEventListener("input", (evt) => {
+    setTimeout(imperialCalculate, 2000);
+    evt.target.value = evt.target.value.replace(",", ".");
+});
 
-const delay = async (ms) => { await new Promise(resolve => setTimeout(resolve, ms)) }
 
 function inputValidator(evt) {
-    return !(evt.keyCode < 48 || evt.keyCode > 57) || (evt.keyCode === 46 && !evt.target.value.includes("."));
+    return !(evt.keyCode < 48 || evt.keyCode > 57) || (evt.keyCode === 46 && !evt.target.value.includes(".")) || evt.keyCode === 44;
 }
 
 async function resultDefault() {
@@ -76,23 +82,25 @@ async function resultInvalid() {
 
 const resultOutput = async (bmi, min, max) => {
     if (window.innerWidth > 767) {
-        resultContainer.style.flexDirection = "row";
         resultContainer.style.maxHeight = "166px";
+        resultContainer.style.flexDirection = "row";
         resultContainer.style.alignItems = "center";
     } else {
+        form.style.maxHeight = "660px";
         resultContainer.style.maxHeight = "257px";
     }
-    resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
-    resultPara.style.fontSize = "16px";
-    window.innerWidth > 1439 ? idealPara.style.width = "206px" : window.innerWidth < 1440 && window.innerWidth > 767 ? idealPara.style.width = "267px" : idealPara.style.width = "";
-    const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
-    idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${min} - ${max}</span>.`;
+    if (bmi > 10 && bmi < 100) {
+        resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
+        resultPara.style.fontSize = "16px";
+        window.innerWidth > 1439 ? idealPara.style.width = "206px" : window.innerWidth < 1440 && window.innerWidth > 767 ? idealPara.style.width = "267px" : idealPara.style.width = "";
+        const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
+        idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${min} - ${max}</span>.`;
+    }
 }
 
-const metricTimer = setTimeout(metricCalculate, 1500);
 
 function metricCalculate() {
-    const bmi = Number((Number(kgInput.value) / ((Number(cmInput.value) / 100) ** 2)).toFixed(1));
+    const bmi = Number((Number(kgInput.value) / ((Number(cmInput.value) / 100) ** 2))).toFixed(1);
     if (cmInput.value.length > 1 && kgInput.value.length > 1) {
         window.innerWidth > 767 ? form.style.maxHeight = "485px" : form.style.maxHeight = "650px"
         const minIdealWeight = (18.5 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1) + "kgs";
@@ -109,7 +117,8 @@ function metricCalculate() {
 function imperialCalculate() {
     const inch = Number(inchInput.value) + Number(ftInput.value) * 12;
     const lbs = Number(lbsInput.value) + Number(stInput.value) * 14;
-    const bmi = Number(((703 * lbs) / (inch ** 2)).toFixed(1));
+    const bmi = Number(((703 * lbs) / (inch ** 2))).toFixed(1);
+    console.log(typeof (bmi));
     if ((lbsInput.length > 0 || stInput.value.length > 0) && (ftInput.value.length > 0 || inchInput.value.length > 0)) {
         form.style.maxHeight = "608px";
         const minWeight = (5 * 18.5 + (18.5 / 5) * (inch - 60));
@@ -120,7 +129,7 @@ function imperialCalculate() {
     } else if ((ftInput.value.length === 0 && inchInput.value.length === 0) || (stInput.value.length === 0 && lbsInput.value.length === 0)) {
         resultDefault();
     }
-    if ((Number(bmi) < 10 || Number(bmi) > 100) && (lbsInput.length > 0 || stInput.value.length > 0) && (ftInput.value.length > 0 || inchInput.value.length > 0)) {
+    if ((bmi < 10 || bmi > 100) && (lbsInput.length > 0 || stInput.value.length > 0) && (ftInput.value.length > 0 || inchInput.value.length > 0)) {
         resultInvalid();
     }
 }
