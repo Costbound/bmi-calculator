@@ -534,7 +534,7 @@ svg {
     }
     .your-result__curved-line {
         position: absolute;
-        right: -80px;
+        right: 120px;
         top: -40px;
     }
     .your-result__img {
