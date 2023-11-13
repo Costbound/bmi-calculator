@@ -60,7 +60,7 @@ svg {
 /* HERO-------------------------------------------------------------------------------------------------------------------------------- */
 .hero__bg {
     border-radius: 0px 0px 35px 35px;
-    background: var(--Gradient-1, linear-gradient(290deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%));
+    background-image: var(--Gradient-1, linear-gradient(290deg, #D6E6FE 0%, rgba(214, 252, 254, 0.00) 100%));    
     position: absolute;
     top: 0;
     z-index: -999;
@@ -536,8 +536,8 @@ svg {
     }
     .your-result__curved-line {
         position: absolute;
-        right: 120px;
-        top: -40px;
+        right: 27px;
+        top: -52px;
     }
     .your-result__img {
         width: 564px;
