@@ -81,27 +81,27 @@ async function resultInvalid() {
 }
 
 const resultOutput = async (bmi, min, max) => {
-    if (window.innerWidth > 767) {
-        resultContainer.style.maxHeight = "166px";
-        resultContainer.style.flexDirection = "row";
-        resultContainer.style.alignItems = "center";
-    } else {
-        form.style.maxHeight = "660px";
-        resultContainer.style.maxHeight = "257px";
-    }
     if (bmi > 10 && bmi < 100) {
-        resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
-        resultPara.style.fontSize = "16px";
-        window.innerWidth > 1439 ? idealPara.style.width = "206px" : window.innerWidth < 1440 && window.innerWidth > 767 ? idealPara.style.width = "267px" : idealPara.style.width = "";
-        const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
-        idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${min} - ${max}</span>.`;
+        if (window.innerWidth > 767) {
+            resultContainer.style.maxHeight = "166px";
+            resultContainer.style.flexDirection = "row";
+            resultContainer.style.alignItems = "center";
+        } else {
+            form.style.maxHeight = "660px";
+            resultContainer.style.maxHeight = "257px";
+        }
+            resultPara.innerHTML = `Your BMI is...<span class="result__span">${bmi}<span>`;
+            resultPara.style.fontSize = "16px";
+            window.innerWidth > 1439 ? idealPara.style.width = "206px" : window.innerWidth < 1440 && window.innerWidth > 767 ? idealPara.style.width = "267px" : idealPara.style.width = "";
+            const fat = bmi < 18.5 ? "underweight" : bmi <= 24.9 ? "healthy weight" : bmi <= 29.9 ? "overweight" : bmi <= 34.9 ? "obese" : bmi <= 39.9 ? "severely obese" : "morbidly obese";
+            idealPara.innerHTML = `Your BMI suggests you’re a ${fat}. Your ideal weight is between <span class="result__ideal-weight-span">${min} - ${max}</span>.`;
     }
 }
 
 
 function metricCalculate() {
     const bmi = Number((Number(kgInput.value) / ((Number(cmInput.value) / 100) ** 2))).toFixed(1);
-    if (cmInput.value.length > 1 && kgInput.value.length > 1) {
+    if (cmInput.value.length > 1 && kgInput.value.length > 1 ) {
         window.innerWidth > 767 ? form.style.maxHeight = "485px" : form.style.maxHeight = "650px"
         const minIdealWeight = (18.5 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1) + "kgs";
         const maxIdealWeight = (24.9 * ((Number(cmInput.value) / 100) ** 2)).toFixed(1) + "kgs";
