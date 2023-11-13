@@ -492,6 +492,8 @@ svg {
         left: 24px;
     }
     .hero__logo {
+        width: 64px;
+        height: 64px;
         position: absolute;
         top: -28px;
         transform: translateY(-100%);
