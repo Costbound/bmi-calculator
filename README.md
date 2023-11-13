@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/responsive-landing-page-with-body-mass-index-calculator-on-it-lQZO4VDhUu)
 - Live Site URL: [Add live site URL here](https://costbound.github.io/bmi-calculator/)
 
 ## My process
