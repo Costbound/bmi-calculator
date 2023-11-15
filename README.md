@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [(https://www.frontendmentor.io/solutions/responsive-landing-page-with-body-mass-index-calculator-on-it-lQZO4VDhUu)]
-- Live Site URL: [(https://costbound.github.io/bmi-calculator/)]
+- Solution URL: [https://www.frontendmentor.io/solutions/responsive-landing-page-with-body-mass-index-calculator-on-it-lQZO4VDhUu]
+- Live Site URL: [https://costbound.github.io/bmi-calculator/]
 
 ## My process
 
